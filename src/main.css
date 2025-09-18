@@ -1,0 +1,28 @@
+:root {
+    --main-black: #2B2B2B;
+    --main-gray: #545454;
+    --main-white: #F1F1F1;
+    --main-red: #B50000;
+    --secondary-black: #1a1a1a
+}
+
+body {
+    font-family: "IBM-DOS-VGA-9x16";
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+@font-face {
+    font-family: 'IBM-DOS-VGA-9x16';
+    src: local('IBM-DOS-VGA-9x16'), url(./fonts/ibm-dos-vga-9x16.ttf) format('woff');
+}
+
+button.MuiButton-root {
+    font-family: 'IBM-DOS-VGA-9x16';
+    background-color: var(--main-red) !important;
+    padding: 10px;
+}
+
+.red-text {
+    color: var(--main-red);
+}
