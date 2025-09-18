@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import useElementOnScreen from './components/hooks/useElementOnScreen';
 import { makeStyles } from "@mui/styles";
 import { Box, Stack } from '@mui/material';
-import Sidebar from "./components/SideBar";
+import Sidebar from "./components/Sidebar";
 import Welcome from "./components/Welcome";
 import AboutMe from "./components/AboutMe";
 import Portfolio from "./components/Portfolio";
