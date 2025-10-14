@@ -120,7 +120,7 @@ const Education = ({ id, title, ref }) => {
                         ) : null}
                         {typeof certificate != 'undefined' ? (
                             <Grid size={6}>
-                                <Button variant="contained" sx={{ width: '180px' }} onClick={() => open(certificate)}>{LANGUAGE.messages["education.certificate"]}</Button>
+                                <Button variant="contained" sx={{ width: '180px' }} onClick={() => open(certificate, '_blank')}>{LANGUAGE.messages["education.certificate"]}</Button>
                             </Grid>
                         ) : null}
                     </Grid>
