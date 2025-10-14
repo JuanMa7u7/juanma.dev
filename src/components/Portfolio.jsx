@@ -15,7 +15,7 @@ const Portfolio = ({ id, title, ref }) => {
         {
             name: 'Fatrian ERP',
             description: LANGUAGE.messages["portfolio.fatrian.description"],
-            media: '/public/img/erp.jpg',
+            media: '/img/erp.jpg',
             technologies: ['html5', 'css3', 'js', 'jquery', 'php', 'mysql'],
             links: {
                 repository: '',
@@ -25,7 +25,7 @@ const Portfolio = ({ id, title, ref }) => {
         {
             name: 'BajioNet Web 2.0',
             description: LANGUAGE.messages["portfolio.bajionet.description"],
-            media: '/public/img/banbajio.jpg',
+            media: '/img/banbajio.jpg',
             technologies: ['html5', 'bootstrap', 'js', 'react', 'c++', 'sqlserver',],
             links: {
                 repository: '',
@@ -35,7 +35,7 @@ const Portfolio = ({ id, title, ref }) => {
         {
             name: 'Shifra Spa',
             description: LANGUAGE.messages["portfolio.shifra.description"],
-            media: '/public/img/shifra-spa.jpg',
+            media: '/img/shifra-spa.jpg',
             technologies: ['html5', 'ts', 'tailwind', 'nextjs', 'supabase', 'aws'],
             links: {
                 repository: '',
