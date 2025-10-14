@@ -19,7 +19,7 @@ const Welcome = ({ id, title, ref }) => {
             ref={ref}
             sx={{
                 paddingTop: {
-                    xs: 7
+                    xs: 6
                 }
             }}
             className={CLASSES.section}
@@ -46,7 +46,6 @@ const Welcome = ({ id, title, ref }) => {
             </div>
             <div className={CLASSES.buttonContainer}>
                 <Button
-                    className={CLASSES.button}
                     variant="contained"
                     sx={CLASSES.button}
                     onClick={() => open('https://drive.google.com/file/d/1ZBLEdjmpc_2PH2B9_BCPPO9WMiAFD_a7', '_blank')}
@@ -64,8 +63,6 @@ const Welcome = ({ id, title, ref }) => {
 
 const useStyles = makeStyles((theme) => ({
     section: {
-        // maxWidth: '70%',
-        paddingRight: "30px",
         minHeight: "100vh",
         display: 'flex',
         flexDirection: 'column',
@@ -94,9 +91,6 @@ const useStyles = makeStyles((theme) => ({
     buttonContainer: {
         paddingBottom: '50px'
     },
-    button: {
-        // width: '180px'
-    },
     socialMediaContainer: {
         display: 'inline',
         '& > svg': {
@@ -111,9 +105,7 @@ const useStyles = makeStyles((theme) => ({
     },
     boxImg: {
         width: '85px',
-        // height: 'auto',
         padding: '0px 0px 15px 0px'
-
     },
 }));
 
