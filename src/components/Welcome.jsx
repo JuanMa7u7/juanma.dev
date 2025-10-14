@@ -45,11 +45,18 @@ const Welcome = ({ id, title, ref }) => {
                 <Link className={CLASSES.link} href="mailto:jmlafuente97@gmail.com">juan@ma.dev</Link>
             </div>
             <div className={CLASSES.buttonContainer}>
-                <Button className={CLASSES.button} variant="contained" sx={CLASSES.button}>{LANGUAGE.messages["welcome.resume"]}</Button>
+                <Button
+                    className={CLASSES.button}
+                    variant="contained"
+                    sx={CLASSES.button}
+                    onClick={() => open('https://drive.google.com/file/d/1ZBLEdjmpc_2PH2B9_BCPPO9WMiAFD_a7', '_blank')}
+                >
+                    {LANGUAGE.messages["welcome.resume"]}
+                </Button>
             </div>
             <div className={CLASSES.socialMediaContainer}>
-                <LinkedInIcon onClick={() => open('https://www.linkedin.com/in/juan-manuel-lafuente-araiza')} />
-                <GitHubIcon onClick={() => open('https://github.com/JuanMa7u7')} />
+                <LinkedInIcon onClick={() => open('https://www.linkedin.com/in/juan-manuel-lafuente-araiza', '_blank')} />
+                <GitHubIcon onClick={() => open('https://github.com/JuanMa7u7', '_blank')} />
             </div>
         </Box>
     );

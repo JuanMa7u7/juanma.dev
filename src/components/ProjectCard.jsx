@@ -34,8 +34,8 @@ const ProjectCard = ({ project }) => {
                 </Stack>
             </CardContent>
             <CardActions className={CLASSES.cardActions} sx={{ marginTop: !isSM && technologies.length > 5 ? '60px' : '0px' }}>
-                {links && links.repository && (<GitHubIcon onClick={() => open(links.repository)} />)}
-                {links && links.web && (<LinkIcon onClick={() => open(links.web)} />)}
+                {links && links.repository && (<GitHubIcon onClick={() => open(links.repository, '_blank')} />)}
+                {links && links.web && (<LinkIcon onClick={() => open(links.web, '_blank')} />)}
             </CardActions>
         </Card>
     );
