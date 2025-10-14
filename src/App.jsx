@@ -11,10 +11,16 @@ import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import { FormattedMessage as FM } from 'react-intl';
 import { langContext } from './components/context/langContext';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import LanguageSelector from './components/LanguageSelector';
 
 const App = () => {
   const LANGUAGE = useContext(langContext);
   const CLASSES = useStyles();
+  const theme = useTheme();
+  const isSM = useMediaQuery(theme.breakpoints.up('sm'));
+  const smallHeight = useMediaQuery('(min-height: 460px)');
   const OBSERVER_OPTIONS = { rootMargin: '0px', threshold: 0.5 }
   const [welcomeRef, welcomeIsVisible] = useElementOnScreen(OBSERVER_OPTIONS);
   const [aboutMeRef, aboutMeIsVisible] = useElementOnScreen(OBSERVER_OPTIONS);
@@ -27,21 +33,24 @@ const App = () => {
   return (
     <Box className={CLASSES.root}>
       <Sidebar sectionsVisibility={sectionsVisibility} />
-      <Stack direction="row" spacing={1} className={CLASSES.languageMenu}>
-        <div
-          className={`${CLASSES.languageMenuIcons} ${LANGUAGE.getLanguage() === 'es-MX' ? 'red-text' : ''}`}
-          onClick={() => LANGUAGE.setLanguage('es-MX')}
-        >
-          Esp
-        </div>
-        <div
-          className={`${CLASSES.languageMenuIcons} ${LANGUAGE.getLanguage() === 'en-US' ? 'red-text' : ''}`}
-          onClick={() => LANGUAGE.setLanguage('en-US')}
-        >
-          Eng
-        </div>
-      </Stack>
-      <Box className={CLASSES.content}>
+      <Box
+        sx={{
+          marginLeft: {
+            xs: 3,
+            sm: 21,
+            md: 39
+          },
+          marginRight: {
+            xs: 3,
+          },
+        }}
+        className={CLASSES.content}
+      >
+        {(!isSM || !smallHeight) && (
+          <Box sx={{ position: 'absolute', right: '0px' }}>
+            <LanguageSelector />
+          </Box>
+        )}
         <Welcome id={LANGUAGE.messages["siderbar.welcome.id"]} title={[<FM id="welcome.title1" />, <FM id="welcome.title2" />]} ref={welcomeRef} />
         <AboutMe id={LANGUAGE.messages["siderbar.about-me.id"]} title={LANGUAGE.messages["siderbar.about-me.title"]} ref={aboutMeRef} />
         <Portfolio id={LANGUAGE.messages["siderbar.portfolio.id"]} title={LANGUAGE.messages["siderbar.portfolio.title"]} ref={portfolioRef} />
@@ -59,14 +68,14 @@ const useStyles = makeStyles((theme) => ({
     color: 'var(--main-white)'
   },
   content: {
-    marginLeft: '310px',
+    // marginLeft: '310px',
   },
   languageMenu: {
+    width: 'fit-content',
     position: 'fixed',
     zIndex: 1,
     justifyContent: "flex-end",
-    paddingLeft: '15px',
-    paddingTop: '15px'
+    padding: '15px',
   },
   languageMenuIcons: {
     // width: '50px',

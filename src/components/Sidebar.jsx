@@ -5,12 +5,13 @@ import List from '@mui/material/List';
 import { Link } from 'react-scroll';
 import { FormattedMessage as FM } from 'react-intl';
 import { langContext } from './context/langContext';
+import LanguageSelector from './LanguageSelector';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Sidebar = ({ sectionsVisibility }) => {
     const LANGUAGE = useContext(langContext);
-
     const CLASSES = useStyles();
-
+    const smallHeight = useMediaQuery('(min-height: 460px)');
     const [
         welcomeIsVisible,
         aboutMeIsVisible,
@@ -19,7 +20,6 @@ const Sidebar = ({ sectionsVisibility }) => {
         skillsIsVisible,
         contactIsVisible
     ] = sectionsVisibility;
-
     const LINKS = [
         {
             id: LANGUAGE.messages["siderbar.welcome.id"],
@@ -54,22 +54,45 @@ const Sidebar = ({ sectionsVisibility }) => {
     ];
 
     return (
-        <div className={CLASSES.sidebar}>
-            <Box sx={{ width: 270 }} className={CLASSES.box} >
-                <Box component="img" className={CLASSES.boxImg} src="/img/profile.png" />
+        <Box
+            className={CLASSES.sidebar}
+        >
+            <Box
+                sx={{
+                    width: {
+                        xs: 0,
+                        sm: 135,
+                        md: 270
+                    }
+                }}
+                className={CLASSES.box}
+            >
+                <Box className={CLASSES.languageContainer} sx={{ display: !smallHeight ? 'none' : 'block' }} >
+                    <LanguageSelector />
+                </Box>
+                <Box
+                    sx={{
+                        width: {
+                            sm: 80,
+                            md: 100
+                        }
+                    }}
+                    component="img"
+                    className={CLASSES.boxImg}
+                    src="/img/profile.png"
+                />
                 <List className={CLASSES.list}>
                     {LINKS.map(({ id, label, isVisible }, index) => (
                         <Link id={`link_${id}`} key={index} to={id} className={`${CLASSES.link} ${isVisible == true ? 'red-text' : ''}`} spy={true} activeClass="active" smooth={true} duration={500} underline="none">{label}</Link>
                     ))}
                 </List>
             </Box>
-        </div >
+        </Box >
     );
 }
 
 const useStyles = makeStyles((theme) => ({
     sidebar: {
-        height: '100%',
         color: 'white',
         position: 'fixed',
         zIndex: 1,
@@ -89,8 +112,8 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
     },
     boxImg: {
-        width: '130px',
-        height: 'auto',
+        // width: '130px',
+        // height: 'auto',
         padding: '0px 0px 30px 0px'
 
     },
@@ -105,6 +128,12 @@ const useStyles = makeStyles((theme) => ({
         '-webkit-user-select': 'none',
         '-ms-user-select': 'none',
         userSelect: 'none',
+    },
+    languageContainer: {
+        paddingBottom: '10px',
+        position: 'absolute',
+        left: '0px',
+        top: '0px'
     }
 }));
 

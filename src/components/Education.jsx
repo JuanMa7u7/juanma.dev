@@ -4,10 +4,14 @@ import { Typography, Button } from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { langContext } from "./context/langContext";
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Education = ({ id, title, ref }) => {
     const LANGUAGE = useContext(langContext);
     const CLASSES = useStyles();
+    const theme = useTheme();
+    const isXS = useMediaQuery(theme.breakpoints.up('xs'));
     const EDUCATION = [
         {
             name: LANGUAGE.messages["education.degree"],
@@ -95,13 +99,13 @@ const Education = ({ id, title, ref }) => {
         },
     ];
     return (
-        <Box id={id} ref={ref} className={CLASSES.section}>
-            <Typography variant="h2" className={CLASSES.title}>{title}</Typography>
+        <Box id={id} ref={ref} className={CLASSES.section} sx={{ maxWidth: !isXS ? '70%' : '100%' }}>
+            <Typography variant={isXS ? "h3" : "h2"} className={CLASSES.title}>{title}</Typography>
             {EDUCATION.map(({ name, place, period, professionalID, certificate }, index) => (
                 <Box key={index} sx={{ flexGrow: 0.2, paddingBottom: '60px' }}>
                     <Grid container spacing={2}>
                         <Grid size={8}>
-                            <Typography variant="h4" sx={{ color: 'var(--main-red)' }}>{name}</Typography>
+                            <Typography variant={isXS ? "h5" : "h4"} sx={{ color: 'var(--main-red)' }}>{name}</Typography>
                         </Grid>
                         <Grid size={4}>
                             <Typography variant="h7">{period}</Typography>
