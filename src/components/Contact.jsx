@@ -7,16 +7,20 @@ import EmailIcon from '@mui/icons-material/Email';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { langContext } from "./context/langContext";
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Contact = ({ id, title, ref }) => {
     const LANGUAGE = useContext(langContext);
     const CLASSES = useStyles();
-    const TECHNOLOGIES = ['html5', 'css3', 'react', 'material-ui'];
+    const theme = useTheme();
+    const isXS = useMediaQuery(theme.breakpoints.up('xs'));
+    const TECHNOLOGIES = ['html5', 'js', 'react', 'material-ui'];
     const iconSize = 22;
     return (
         <div id={id} ref={ref} className={CLASSES.section}>
-            <Typography className={CLASSES.title} variant="h3">{title}</Typography>
-            <Stack direction="column" spacing={1} useFlexGap sx={{ flexWrap: 'wrap', justifyContent: "flex-start", padding: '20px 0px' }}>
+            <Typography className={CLASSES.title} variant={isXS ? "h3" : "h2"}>{title}</Typography>
+            <Stack direction="column" spacing={1} useFlexGap sx={{ flexWrap: 'wrap', justifyContent: "flex-start", padding: isXS ? '10px 0px' : '20px 0px' }}>
                 <Stack direction="row" spacing={2} className={CLASSES.stackContact}>
                     <EmailIcon sx={{ color: 'var(--main-red)' }}></EmailIcon>
                     <Typography variant="h7">Email</Typography>
@@ -24,7 +28,7 @@ const Contact = ({ id, title, ref }) => {
                 </Stack>
                 <Stack direction="row" spacing={2} className={CLASSES.stackContact}>
                     <WhatsAppIcon sx={{ color: 'var(--main-red)' }}></WhatsAppIcon>
-                    <Typography variant="h7">Whatsapp</Typography>
+                    <Typography variant="h9">Whatsapp</Typography>
                     <Link className={CLASSES.link} href="https://wa.me/+524771210752" target="_blank">+52 477 121 0752</Link>
                 </Stack>
                 <Stack direction="row" spacing={2} className={CLASSES.stackContact}>
@@ -34,7 +38,7 @@ const Contact = ({ id, title, ref }) => {
                 </Stack>
             </Stack>
             <Typography variant="h5">{LANGUAGE.messages["contact.content1"]}:</Typography>
-            <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: 'wrap', justifyContent: "flex-start", padding: '20px 0px' }}>
+            <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: 'wrap', justifyContent: "flex-start", margin: '20px 0px' }}>
                 {TECHNOLOGIES.map((tech, index) => (
                     <TechCards key={index} tech={tech} size={iconSize}></TechCards>
                 ))}
@@ -45,7 +49,7 @@ const Contact = ({ id, title, ref }) => {
 
 const useStyles = makeStyles((theme) => ({
     section: {
-        maxWidth: '70%',
+        maxWidth: '100%',
         minHeight: "100vh",
         display: 'flex',
         flexDirection: 'column',

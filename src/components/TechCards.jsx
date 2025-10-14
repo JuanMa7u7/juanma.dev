@@ -29,6 +29,10 @@ import GooglecloudOriginal from "react-devicons/googlecloud/original";
 import JestPlain from "react-devicons/jest/plain";
 import CsharpOriginal from "react-devicons/csharp/original";
 import SQL from '/img/sql.svg'
+import SupabaseOriginal from 'react-devicons/supabase/original';
+import TailwindCssOriginal from 'react-devicons/tailwindcss/original';
+import ExpressjsOriginal from 'react-devicons/express/original'
+
 
 const TechCards = ({ tech, size = 20 }) => {
     const { icon, label } = (
@@ -62,7 +66,10 @@ const TechCards = ({ tech, size = 20 }) => {
                                                                                                                     : tech == 'jest' ? { icon: <JestPlain size={size} />, label: 'JEST' }
                                                                                                                         : tech == 'c#' ? { icon: <CsharpOriginal size={size} />, label: 'C#' }
                                                                                                                             : tech == 'sql' ? { icon: <img src={SQL} style={{ width: `${size}px`, height: 'auto' }} />, label: 'SQL' }
-                                                                                                                                : { icon: <div />, label: tech.toUpperCase() }
+                                                                                                                                : tech == 'supabase' ? { icon: <SupabaseOriginal size={size} />, label: 'SUPABASE' }
+                                                                                                                                    : tech == 'tailwind' ? { icon: <TailwindCssOriginal size={size} />, label: 'TAILWIND CSS' }
+                                                                                                                                        : tech == 'express' ? { icon: <ExpressjsOriginal size={size} />, label: 'EXPRESS.JS' }
+                                                                                                                                            : { icon: <div />, label: tech.toUpperCase() }
     );
     return (
         <Chip sx={{ backgroundColor: 'var(--main-gray)', color: 'var(--main-white)', fontSize: '9px', borderRadius: 0 }} icon={icon} label={label} />

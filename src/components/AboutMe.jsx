@@ -2,13 +2,17 @@ import { useContext } from 'react';
 import { makeStyles } from "@mui/styles";
 import { Box, Link, Typography } from '@mui/material';
 import { langContext } from "./context/langContext";
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const AboutMe = ({ id, title, ref }) => {
     const LANGUAGE = useContext(langContext);
     const CLASSES = useStyles();
+    const theme = useTheme();
+    const isXS = useMediaQuery(theme.breakpoints.up('xs'));
     return (
         <Box id={id} ref={ref} className={CLASSES.section}>
-            <Typography variant="h2" className={CLASSES.title}>{title}</Typography>
+            <Typography variant={isXS ? "h3" : "h2"} className={CLASSES.title}>{title}</Typography>
             <Typography variant="h6" className={CLASSES.aboutMe}>{LANGUAGE.messages["about-me.content1"]}</Typography>
             <Typography variant="h5" className={CLASSES.currently}>{LANGUAGE.messages["about-me.content2"]}</Typography>
             <Typography variant="h6" className={CLASSES.contact}>
@@ -25,7 +29,8 @@ const AboutMe = ({ id, title, ref }) => {
 
 const useStyles = makeStyles((theme) => ({
     section: {
-        maxWidth: '70%',
+        // maxWidth: '70%',
+        marginRight: "40px",
         minHeight: "100vh",
         display: 'flex',
         flexDirection: 'column',
