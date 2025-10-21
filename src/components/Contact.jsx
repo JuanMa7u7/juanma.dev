@@ -18,7 +18,6 @@ const Contact = ({ id, title, ref }) => {
     const TECHNOLOGIES = ['html5', 'js', 'react', 'material-ui'];
     const iconSize = 22;
     const PHONE = import.meta.env.VITE_WA_PHONE ?? "";
-    console.log(PHONE)
     return (
         <div id={id} ref={ref} className={CLASSES.section}>
             <Typography className={CLASSES.title} variant={isXS ? "h3" : "h2"}>{title}</Typography>
