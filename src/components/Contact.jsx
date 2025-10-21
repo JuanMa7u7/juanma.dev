@@ -17,6 +17,8 @@ const Contact = ({ id, title, ref }) => {
     const isXS = useMediaQuery(theme.breakpoints.up('xs'));
     const TECHNOLOGIES = ['html5', 'js', 'react', 'material-ui'];
     const iconSize = 22;
+    const PHONE = import.meta.env.VITE_WA_PHONE ?? "";
+    console.log(PHONE)
     return (
         <div id={id} ref={ref} className={CLASSES.section}>
             <Typography className={CLASSES.title} variant={isXS ? "h3" : "h2"}>{title}</Typography>
@@ -24,17 +26,17 @@ const Contact = ({ id, title, ref }) => {
                 <Stack direction="row" spacing={2} className={CLASSES.stackContact}>
                     <EmailIcon sx={{ color: 'var(--main-red)' }}></EmailIcon>
                     <Typography variant="h7">Email</Typography>
-                    <Link className={CLASSES.link} href="mailto:jmlafuente97@gmail.com">juan@ma.dev</Link>
+                    <Link className={CLASSES.link} href={`mailto:${import.meta.env.VITE_EMAIL}`}>juan@ma.dev</Link>
                 </Stack>
                 <Stack direction="row" spacing={2} className={CLASSES.stackContact}>
                     <WhatsAppIcon sx={{ color: 'var(--main-red)' }}></WhatsAppIcon>
                     <Typography variant="h9">Whatsapp</Typography>
-                    <Link className={CLASSES.link} href="https://wa.me/+524771210752" target="_blank">+52 477 121 0752</Link>
+                    <Link className={CLASSES.link} href={`https://wa.me/${PHONE.replace(/\s/g, "")}`} target="_blank">{PHONE}</Link>
                 </Stack>
                 <Stack direction="row" spacing={2} className={CLASSES.stackContact}>
                     <LinkedInIcon sx={{ color: 'var(--main-red)' }}></LinkedInIcon>
                     <Typography variant="h7">LinkedIn</Typography>
-                    <Link className={CLASSES.link} href="https://www.linkedin.com/in/juan-manuel-lafuente-araiza/" target="_blank">in/juanma</Link>
+                    <Link className={CLASSES.link} href={`${import.meta.env.VITE_LINKEDIN_URL}`} target="_blank">in/juanma</Link>
                 </Stack>
             </Stack>
             <Typography variant="h5">{LANGUAGE.messages["contact.content1"]}:</Typography>
@@ -43,7 +45,7 @@ const Contact = ({ id, title, ref }) => {
                     <TechCards key={index} tech={tech} size={iconSize}></TechCards>
                 ))}
             </Stack>
-        </div>
+        </div >
     );
 }
 

@@ -17,11 +17,11 @@ const AboutMe = ({ id, title, ref }) => {
             <Typography variant="h5" className={CLASSES.currently}>{LANGUAGE.messages["about-me.content2"]}</Typography>
             <Typography variant="h6" className={CLASSES.contact}>
                 {LANGUAGE.messages["about-me.content3"]}
-                <Link className={CLASSES.link} href="mailto:jmlafuente97@gmail.com">juan@ma.dev</Link>
+                <Link className={CLASSES.link} href={`mailto:${import.meta.env.VITE_EMAIL}`}>juan@ma.dev</Link>
             </Typography>
             <Typography variant="h6">
                 {LANGUAGE.messages["about-me.content4"]}
-                <Link className={CLASSES.link} href="https://www.linkedin.com/in/juan-manuel-lafuente-araiza" target="_blank">LinkedIn</Link>
+                <Link className={CLASSES.link} href={`${import.meta.env.VITE_LINKEDIN_URL}`} target="_blank">LinkedIn</Link>
             </Typography>
         </Box>
     );

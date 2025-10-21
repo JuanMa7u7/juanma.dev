@@ -42,20 +42,20 @@ const Welcome = ({ id, title, ref }) => {
             </div>
             <div className={CLASSES.contact}>
                 <Typography variant="h7">{LANGUAGE.messages["welcome.content2"]}{" "}</Typography>
-                <Link className={CLASSES.link} href="mailto:jmlafuente97@gmail.com">juan@ma.dev</Link>
+                <Link className={CLASSES.link} href={`mailto:${import.meta.env.VITE_EMAIL}`}>juan@ma.dev</Link>
             </div>
             <div className={CLASSES.buttonContainer}>
                 <Button
                     variant="contained"
                     sx={CLASSES.button}
-                    onClick={() => open('https://drive.google.com/file/d/1ZBLEdjmpc_2PH2B9_BCPPO9WMiAFD_a7', '_blank')}
+                    onClick={() => open(import.meta.env.VITE_RESUME_URL, '_blank')}
                 >
                     {LANGUAGE.messages["welcome.resume"]}
                 </Button>
             </div>
             <div className={CLASSES.socialMediaContainer}>
-                <LinkedInIcon onClick={() => open('https://www.linkedin.com/in/juan-manuel-lafuente-araiza', '_blank')} />
-                <GitHubIcon onClick={() => open('https://github.com/JuanMa7u7', '_blank')} />
+                <LinkedInIcon onClick={() => open(import.meta.env.VITE_LINKEDIN_URL, '_blank')} />
+                <GitHubIcon onClick={() => open(import.meta.env.VITE_GITHUB_URL, '_blank')} />
             </div>
         </Box>
     );
